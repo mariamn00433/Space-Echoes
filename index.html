@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Echoes | Explore the forgotten pioneers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <radialGradient id="gMoon" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#f1f5fc"/><stop offset=".55" stop-color="#a3b3d1"/><stop offset="1" stop-color="#3b4d73"/></radialGradient>
+    <radialGradient id="gMars" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ffb887"/><stop offset=".5" stop-color="#e0643f"/><stop offset="1" stop-color="#6e2c2f"/></radialGradient>
+    <radialGradient id="gEarth" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#7cc8ff"/><stop offset=".5" stop-color="#1d7be0"/><stop offset="1" stop-color="#0b2f78"/></radialGradient>
+    <radialGradient id="gGreen" cx=".4" cy=".3" r=".85"><stop offset="0" stop-color="#bdff9f"/><stop offset=".55" stop-color="#4fd47e"/><stop offset="1" stop-color="#1f8f5a"/></radialGradient>
+    <radialGradient id="gGlass" cx=".4" cy=".25" r=".9"><stop offset="0" stop-color="#9be8ff" stop-opacity=".38"/><stop offset="1" stop-color="#35d9ff" stop-opacity=".06"/></radialGradient>
+    <radialGradient id="gSkin" cx=".4" cy=".3" r=".9"><stop offset="0" stop-color="#ffd7b5"/><stop offset="1" stop-color="#ee9d6c"/></radialGradient>
+    <linearGradient id="gWhite" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#a9b9d8"/></linearGradient>
+    <linearGradient id="gVisor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3f82"/><stop offset="1" stop-color="#06122e"/></linearGradient>
+  </defs></svg>
+  <div class="stars stars-one"></div><div class="stars stars-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" data-go="home"><span class="brand-mark"><i data-ic="planet"></i></span><span>SPACE ECHOES</span></a>
+    <nav><button data-go="destinations">Explore</button><button data-go="home">Our Mission</button><button data-go="log">My Log</button></nav>
+    <div class="top-right"><button id="language-toggle" class="language-toggle" aria-label="Language">العربية</button><span id="top-avatar" class="top-avatar"></span><span id="top-name">Explorer</span><span class="xp-pill"><i data-ic="spark"></i> <b id="top-xp">0</b> XP</span></div>
+  </header>
+
+  <main>
+    <!-- 01 HOME / HERO -->
+    <section id="home" class="screen active">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <span class="eyebrow">AN INTERACTIVE SPACE EXPLORATION</span>
+          <h1>Their mission ended.<br>Their discoveries<br><em>live on.</em></h1>
+          <p>Travel across the Moon and Mars to meet the machines that changed what we know about space.</p>
+          <div class="button-row"><button class="btn primary" data-go="gender"><i data-ic="spark"></i> LET'S LAUNCH</button></div>
+          <div class="nasa-note"><span class="nasa-dot">NASA</span> Real missions. Remarkable discoveries.</div>
+        </div>
+        <div class="hero-art"><div class="planet-glow"></div><img class="astronaut-img" src="images/astronaut.png" alt="Astronaut floating in space"><div class="orbit-ring"></div><div class="planet-earth"><i data-ic="earth"></i></div><span class="hero-caption">YOUR JOURNEY STARTS HERE</span></div>
+      </div>
+      <div class="home-bottom"><span>01 / 06</span><span>SCROLL TO BEGIN ↓</span></div>
+    </section>
+
+    <!-- 02 GENDER SELECTION -->
+    <section id="gender" class="screen narrow-screen">
+      <div class="step-line"><span>01 / 04</span><i class="active"></i><i></i><i></i><i></i></div>
+      <span class="eyebrow">FIRST, MEET YOUR EXPLORER</span>
+      <h1>Who is joining the mission?</h1>
+      <p class="muted">Choose your explorer identity to begin your journey.</p>
+      <div class="gender-grid">
+        <button class="choice-card gender-choice" data-gender="girl"><span class="choice-emoji"><img class="char-img" src="images/girl-astronaut.png" alt=""></span><b>Girl</b><small>Ready to explore</small></button>
+        <button class="choice-card gender-choice" data-gender="boy"><span class="choice-emoji"><img class="char-img" src="images/boy-astronaut.png" alt=""></span><b>Boy</b><small>Ready to explore</small></button>
+      </div>
+      <button class="btn primary continue" id="gender-next" disabled>CONTINUE →</button>
+    </section>
+
+    <!-- 03 CHARACTER + NAME -->
+    <section id="profile" class="screen narrow-screen">
+      <div class="step-line"><span>02 / 04</span><i class="done"></i><i class="active"></i><i></i><i></i></div>
+      <span class="eyebrow">EXPLORER PROFILE / START</span>
+      <h1>Welcome, <em>Space Explorer!</em></h1>
+      <p class="muted">Every great discovery starts with curiosity.</p>
+      <div id="character-grid" class="character-grid"></div>
+      <label class="name-field"><span><i data-ic="user"></i></span><input id="explorer-name" maxlength="18" placeholder="Enter your explorer name" autocomplete="off"></label>
+      <p class="form-hint" id="profile-hint">Choose your character and enter your name.</p>
+      <button class="btn primary continue" id="profile-next" disabled>START MY MISSION　→</button>
+    </section>
+
+    <!-- 04 DESTINATIONS -->
+    <section id="destinations" class="screen page-wrap">
+      <div class="step-line"><span>03 / 04</span><i class="done"></i><i class="done"></i><i class="active"></i><i></i></div>
+      <span class="eyebrow">MISSION CONTROL / DESTINATION SELECT</span>
+      <h1 class="center">Where will your story begin?</h1>
+      <p class="muted center">Choose a destination and uncover the secrets hidden there.</p>
+      <div id="destination-grid" class="destination-grid"></div>
+    </section>
+
+    <!-- EQUIPMENT EXPLORER -->
+    <section id="equipment-screen" class="screen page-wrap">
+      <button class="back-link" data-go="destinations">← Back to destinations</button>
+      <div class="section-heading"><div><span class="eyebrow">PLANET EQUIPMENT EXPLORER</span><h1 id="equipment-heading">Explore the forgotten pioneers</h1><p class="muted">Choose a mission marker to uncover its story.</p></div><div class="discovery-count"><small>YOUR DISCOVERIES</small><b id="level-count">0 / 2</b></div></div>
+      <div class="explorer-layout"><div id="equipment-list" class="equipment-list"></div><aside class="clue-panel"><small>MISSION CLUES</small><p>These machines explored, collected data, and helped scientists understand our solar system.</p><div id="mini-progress"></div></aside></div>
+    </section>
+
+    <!-- VIDEO / STORY -->
+    <section id="video-screen" class="screen page-wrap">
+      <button class="back-link" id="video-back">← Back to equipment</button>
+      <span class="eyebrow">EQUIPMENT STORY / VIDEO</span>
+      <div class="story-layout">
+        <div class="video-column">
+          <div class="video-frame">
+            <iframe id="mission-video" title="Space Echoes mission video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-placeholder" id="video-placeholder" style="display:none"><span><i data-ic="play"></i></span><b>MISSION VIDEO</b></div>
+          </div>
+          <div class="video-caption"><span><i data-ic="spark"></i> SPACE ECHOES STORY</span><span id="video-duration">MISSION VIDEO</span></div>
+        </div>
+        <div class="story-copy">
+          <span class="tag">A STORY INSPIRED BY A REAL NASA MISSION</span>
+          <h1 id="story-title">Hello, Earth.</h1>
+          <p id="story-text">Discover the story behind this remarkable mission.</p>
+          <div class="fact-strip" id="story-facts"></div>
+          <button class="btn outline full" id="science-article">DISCOVER THE SCIENCE ↗</button><button class="btn primary full" id="finish-video">I FINISHED WATCHING →</button>
+          <p class="tiny-note">After the video, you will answer a short mission quiz and earn XP.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCIENCE ARTICLE -->
+    <section id="article-screen" class="screen page-wrap">
+      <button class="back-link" id="article-back">← Back to story</button>
+      <span class="eyebrow">SCIENCE FILE / NASA RESEARCH</span>
+      <h1 id="article-title">Discover the science</h1>
+      <p class="muted" id="article-subtitle"></p>
+      <article class="science-article"><p id="article-body"></p><a id="article-source" href="https://science.nasa.gov/" target="_blank" rel="noopener">Read more from NASA ↗</a></article>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz-screen" class="screen page-wrap">
+      <button class="back-link" id="quiz-back">← Back to story</button>
+      <span class="eyebrow">MISSION CHALLENGE / KNOWLEDGE CHECK</span>
+      <div class="quiz-heading"><h1>One last challenge, <em>Explorer!</em></h1><p class="muted">Answer the questions, earn points, and add this story to your discovery log.</p></div>
+      <div class="quiz-layout"><div class="quiz-panel"><div class="quiz-progress"><span id="question-number">QUESTION 1 / 4</span><span id="question-points">20 XP</span></div><div class="progress-track"><i id="quiz-progress-bar"></i></div><h2 id="question-text"></h2><div id="answer-options" class="answer-options"></div><p id="answer-feedback" class="feedback"></p><button class="btn primary full" id="check-answer" disabled>CHECK ANSWER →</button></div><aside class="badge-panel"><span class="badge-orbit"><i data-ic="spark"></i></span><small>MISSION REWARD</small><div class="badge-planet" id="badge-planet"><i data-ic="planet"></i></div><h3 id="badge-title">Mission Explorer</h3><p>Earn up to <b>80 XP</b> by answering all four questions correctly.</p><div class="reward-points">+20 XP <span>per correct answer</span></div></aside></div>
+    </section>
+
+    <!-- LOG -->
+    <section id="log" class="screen page-wrap">
+      <span class="eyebrow">PERSONAL ARCHIVE</span><h1>Your discovery <em>log.</em></h1>
+      <div class="log-summary"><div><small>TOTAL EXPERIENCE</small><b><span id="log-xp">0</span> XP</b></div><div><small>STORIES DISCOVERED</small><b id="log-found">0 / 6</b></div><div><small>EXPLORER</small><b id="log-name">Explorer</b></div></div>
+      <h2>My discovered stories</h2><div id="log-list" class="log-list"></div>
+      <div id="profile-summary" class="profile-summary"></div><h2>Mission levels</h2><div id="log-levels" class="log-list"></div><h2>My badges</h2><div id="log-badges" class="badge-list"></div><button class="btn outline" id="reset-progress">Reset my progress</button>
+    </section>
+  </main>
+  <footer><span><i data-ic="planet"></i> SPACE ECHOES</span><span>Explore responsibly. Stay curious.</span><small>Educational prototype · Mission facts should be checked against NASA primary sources.</small></footer>
+  <div id="toast" class="toast"></div>
+  <script src="icons.js"></script>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
